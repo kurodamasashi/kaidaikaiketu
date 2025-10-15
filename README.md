@@ -1,2 +1,3 @@
 # kaidaikaiketu
 アプリケーション開発のための練習用リポジトリ
+kurodamasahi
