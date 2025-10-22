@@ -10,18 +10,30 @@ float paddleWidth = 80;    // パドルの幅（少し狭く）
 float paddleHeight = 15;   // パドルの高さ
 
 int score = 0;             // スコア
+
+int changeBack = 10; 
+
 boolean gameOver = false;
+
+PImage hero;
 
 void setup() {
   size(500, 500);
   ballX = width / 2;
   ballY = height / 3;
   paddleY = height - 40;
+  hero = loadImage("hero.png");
   textAlign(CENTER, CENTER);
 }
 
 void draw() {
+  if (score <= changeBack){
   background(30);
+}
+else{
+   background(30);
+   image(hero, 0, 0, 500, 500);
+}
   
   if (!gameOver) {
     // --- ボール移動 ---
@@ -47,8 +59,8 @@ void draw() {
       ballSpeedY *= -1;
       
       // 速度アップ
-      ballSpeedY *= 1.05;
-      ballSpeedX *= 1.05;
+      ballSpeedY *= 1.1;
+      ballSpeedX *= 1.1;
       
       // 速度が上がるほど加点が大きくなる
       int point = (int)(abs(ballSpeedY) * 2);
@@ -67,7 +79,12 @@ void draw() {
     fill(100, 200, 255);
     rect(paddleX, paddleY, paddleWidth, paddleHeight);
     
-    fill(255);
+    if (score <= changeBack){
+      fill(255);
+    }
+    else{
+      fill(178,34,34);
+    }
     textSize(20);
     text("Score: " + score, width/2, 30);
     
