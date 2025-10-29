@@ -46,15 +46,14 @@ void draw() {
     ballX += ballSpeedX;
     ballY += ballSpeedY;
     
-    // --- 壁で反射 ---
+    // --- 壁で反射 ---.
     if (ballX < ballSize/2 || ballX > width - ballSize/2) {
       ballSpeedX *= -1;
-      // 壁での反射角を少しランダムにずらす
-      ballSpeedX += random(-0.3, 0.3);
     }
+    
+    // --- 天井で反射 ---
     if (ballY < ballSize/2) {
       ballSpeedY *= -1;
-      ballSpeedX += random(-0.3, 0.3);
     }
     
     // --- パドル位置（マウス操作） ---
@@ -63,7 +62,7 @@ void draw() {
     
     // --- パドルとの当たり判定 ---
   if (ballY + ballSize/2 >= paddleY && 
-      ballY + ballSize/2 <= paddleY + 10 && // 上面10px以内のみ判定
+      ballY + ballSize/2 <= paddleY + 20 && // 上面15px以内のみ判定
       ballX > paddleX && ballX < paddleX + paddleWidth &&
       ballSpeedY > 0) {
       
