@@ -62,9 +62,10 @@ void draw() {
     paddleX = constrain(paddleX, 0, width - paddleWidth);
     
     // --- パドルとの当たり判定 ---
-    if (ballY + ballSize/2 >= paddleY && 
-        ballX > paddleX && ballX < paddleX + paddleWidth && 
-        ballSpeedY > 0) {
+  if (ballY + ballSize/2 >= paddleY && 
+      ballY + ballSize/2 <= paddleY + 10 && // 上面10px以内のみ判定
+      ballX > paddleX && ballX < paddleX + paddleWidth &&
+      ballSpeedY > 0) {
       
       // パドルのどこに当たったかを計算
       float hitPos = (ballX - (paddleX + paddleWidth/2)) / (paddleWidth/2);
